@@ -4,6 +4,49 @@
              xmlns:local="clr-namespace:PR12"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <Style x:Key="text" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground" Value=" #445c93"></Setter>
+        </Style>
+
+        <Style x:Key="textbox" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground" Value=" #445c93"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+
+        <Style x:Key="combobox" TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground" Value=" #445c93"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
+
+        <Style x:Key="check" TargetType="CheckBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="Foreground" Value=" #445c93"></Setter>
+        </Style>
+
+        <ControlTemplate x:Key="button" TargetType="Button">
+            <Border Width="200" Height="40" 
+                    Background="#bae3e8"                   
+                    BorderThickness="1"
+                    >
+                <ContentControl 
+                     Content="{TemplateBinding Content}" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    FontSize="18"
+                    FontFamily="Comic Sans MS"
+                   Foreground=" #445c93"
+                    />
+            </Border>
+        </ControlTemplate>
+
+
     </Application.Resources>
 </Application>

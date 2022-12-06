@@ -14,18 +14,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
             </RowDefinition>
-            <RowDefinition Height="6*">
+            <RowDefinition Height="3*">
             </RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <Button Name="buttonTour" Click="buttonTour_Click">Туры</Button>
-            <TextBlock>Список отелей</TextBlock>
-            <TextBlock>Введите количество записей на одной странице</TextBlock>
-            <TextBox Width="150" Name="textboxCount" PreviewTextInput="textboxCount_PreviewTextInput" TextChanged="textboxCount_TextChanged"></TextBox>
-            <TextBlock Name="txtNextt" Visibility="{Binding Button[0]}" Uid="next" Text="в начало" MouseDown="txtNextt_MouseDown"></TextBlock>
-            <TextBlock></TextBlock>
-            <TextBlock Name="txtNextt2" Visibility="{Binding Button[1]}" Uid="next" Text="в конец" MouseDown="txtNextt_MouseDown"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Button  VerticalAlignment="Center" Margin="20,10,0,0" Template="{StaticResource button}" Name="buttonTour" Click="buttonTour_Click">Туры</Button>
+                <TextBlock Margin="100,0,0,0" VerticalAlignment="Center" Style="{StaticResource text}">Список отелей:</TextBlock>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,10,10,0" Style="{StaticResource text}">Введите количество записей на одной странице</TextBlock>
+                <TextBox Margin="0,10,0,0" Style="{StaticResource textbox}" Width="70" Name="textboxCount" PreviewTextInput="textboxCount_PreviewTextInput" TextChanged="textboxCount_TextChanged"></TextBox>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtNextt" Visibility="{Binding Button[0]}" Uid="next" Text="в начало" MouseDown="txtNextt_MouseDown"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtPrev" Uid="prev" Text="&lt;"  MouseDown="GoPage_MouseDown"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt1" Uid="1" Text="{Binding Path=NPage[0]}" Visibility="{Binding Visible[0]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[0]}"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt2" Uid="2" Text="{Binding Path=NPage[1]}" Visibility="{Binding Visible[1]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[1]}"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt3" Uid="3" Text="{Binding Path=NPage[2]}" Visibility="{Binding Visible[2]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[2]}"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt4" Uid="4" Text="{Binding Path=NPage[3]}" Visibility="{Binding Visible[3]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[3]}"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt5" Uid="5" Text="{Binding Path=NPage[4]}" Visibility="{Binding Visible[4]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[4]}"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtNext" Uid="next" Text="&gt;"  MouseDown="GoPage_MouseDown"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtNextt2" Visibility="{Binding Button[1]}" Uid="next" Text="в конец" MouseDown="txtNextt_MouseDown"></TextBlock>
+            </StackPanel>
+            
         </StackPanel>
         
         <StackPanel Grid.Row="1">

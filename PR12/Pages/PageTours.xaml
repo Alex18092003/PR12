@@ -24,8 +24,16 @@
         <StackPanel Grid.Row="0">
             <StackPanel HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Введите текст для поиска по названию:</TextBlock>
-                    <TextBox PreviewTextInput="textboxSearch_PreviewTextInput" Width="150" Name="textboxSearch" TextChanged="textboxSearch_TextChanged">
+                    <TextBlock Margin="0,10,5,0" Style="{StaticResource text}">Введите текст для поиска по названию:</TextBlock>
+                    <TextBox Margin="0,10,0,0" Style="{StaticResource textbox}"  PreviewTextInput="textboxSearch_PreviewTextInput" Width="150" Name="textboxSearch" TextChanged="textboxSearch_TextChanged">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                Введите текст для поиска
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                    <TextBlock Margin="10,10,5,0" Style="{StaticResource text}">По описанию:</TextBlock>
+                    <TextBox  Margin="0,10,0,0" Style="{StaticResource textbox}" PreviewTextInput="textboxSearch_PreviewTextInput" Width="150" Name="textboxSearch2" TextChanged="textboxSearch_TextChanged">
                         <TextBox.ToolTip>
                             <ToolTip>
                                 Введите текст для поиска
@@ -34,27 +42,20 @@
                     </TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Введите текст для поиска по описанию:</TextBlock>
-                    <TextBox PreviewTextInput="textboxSearch_PreviewTextInput" Width="150" Name="textboxSearch2" TextChanged="textboxSearch_TextChanged">
-                        <TextBox.ToolTip>
-                            <ToolTip>
-                                Введите текст для поиска
-                            </ToolTip>
-                        </TextBox.ToolTip>
-                    </TextBox>
+                    
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Выберите тип:</TextBlock>
-                    <ComboBox Width="200" Name="comboboxType" SelectionChanged="comboboxType_SelectionChanged">
+                    <TextBlock Margin="0,10,5,0" Style="{StaticResource text}">Выберите тип:</TextBlock>
+                    <ComboBox Margin="0,10,0,0" Style="{StaticResource combobox}" Width="200" Name="comboboxType" SelectionChanged="comboboxType_SelectionChanged">
                         <ComboBox.ToolTip>
                             <ToolTip>
                                 Раскройте список типов
                             </ToolTip>
                         </ComboBox.ToolTip>
                     </ComboBox>
-                    <TextBlock>Сортировать по стоимости:</TextBlock>
-                    <ComboBox Width="210" Name="comboboxSort" SelectionChanged="comboboxType_SelectionChanged">
+                    <TextBlock Margin="10,10,5,0" Style="{StaticResource text}">Сортировать по стоимости:</TextBlock>
+                    <ComboBox Margin="0,10,0,0" Style="{StaticResource combobox}" Width="210" Name="comboboxSort" SelectionChanged="comboboxType_SelectionChanged">
                         <ComboBoxItem>Без сортировки</ComboBoxItem>
                         <ComboBoxItem>По возрастанию стоимости тура</ComboBoxItem>
                         <ComboBoxItem>По убыванию стоимости тура</ComboBoxItem>
@@ -67,14 +68,14 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox Name="checkboxActual" Checked="checkboxActual_Checked" Unchecked="checkboxActual_Checked">
-                        только актуальные туры
+                    <CheckBox Padding="10,0,0,0" Margin="0,10,0,0" Style="{StaticResource check}"  Name="checkboxActual" Checked="checkboxActual_Checked" Unchecked="checkboxActual_Checked">
                     </CheckBox>
+                    <TextBlock Margin="0,2,0,0" Style="{StaticResource text}">только актуальные туры</TextBlock>
                 </StackPanel>
                 
             </StackPanel>
-            <StackPanel>
-                <TextBlock Name="textMoney"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Margin="0,0,50,0" Style="{StaticResource text}" Name="textMoney"></TextBlock>
                 
             </StackPanel>
           
@@ -88,18 +89,19 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="5" BorderThickness="1"  BorderBrush="Black">
-                        <Grid Name="gridTours" Width="300" Height="300" Margin="10,10,10,10">
+                    <Border Padding="5" BorderThickness="1"  BorderBrush=" #445c93">
+                        <Grid Name="gridTours" Width="300" Height="230" Margin="10,10,10,10">
                             <StackPanel>
-                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
-                                <Image Width="200" Height="200" Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultImage}}"></Image>
+                                <TextBlock Style="{StaticResource text}" Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
+                                <Image Width="150" Height="150" Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultImage}}"></Image>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Name="textboxMoney" Text="{Binding Price, StringFormat={}{0:F3} РУБ}"></TextBlock>
+                                    <TextBlock Style="{StaticResource text}" Name="textboxMoney" Text="{Binding Price, StringFormat={}{0:F3} РУБ}"></TextBlock>
                                    
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Actual}" HorizontalAlignment="Left" Foreground="{Binding ForegroundActual}"></TextBlock>
-                                    <TextBlock Text="{Binding TicketCount, StringFormat={}Билетов: {0}}" HorizontalAlignment="Right" ></TextBlock>
+
+                                    <TextBlock Style="{StaticResource text}" Text="{Binding Actual}" HorizontalAlignment="Left" Foreground="{Binding ForegroundActual}"></TextBlock>
+                                    <TextBlock Margin="100,0,0,0" Style="{StaticResource text}" Text="{Binding TicketCount, StringFormat={}Билетов: {0}}" HorizontalAlignment="Right" ></TextBlock>
                                 </StackPanel>
                             
                             </StackPanel>
@@ -110,7 +112,7 @@
         </ListView>
 
         <StackPanel Grid.Row="2">
-            <Button Name="buttonHotel" Click="buttonHotel_Click">Отели</Button>
+            <Button HorizontalAlignment="Right" Margin="0,20,50,0"  Template="{StaticResource button}" Name="buttonHotel" Click="buttonHotel_Click">Отели</Button>
         </StackPanel>
 
     </Grid>

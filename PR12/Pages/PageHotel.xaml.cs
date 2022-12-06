@@ -71,5 +71,25 @@ namespace PR12.Pages
             pc.Currentpage = pc.CountPages;
             datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
         }
+
+        private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)  // обработка нажатия на один из Textblock в меню с номерами страниц
+        {
+            TextBlock tb = (TextBlock)sender;
+
+            switch (tb.Uid)  // определяем, куда конкретно было сделано нажатие
+            {
+                case "prev":
+                    pc.Currentpage--;
+                    break;
+                case "next":
+                    pc.Currentpage++;
+                    break;
+                default:
+                    pc.Currentpage = Convert.ToInt32(tb.Text);
+                    break;
+            }
+            datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();  // оображение записей постранично с определенным количеством на каждой странице
+
+        }
     }
 }

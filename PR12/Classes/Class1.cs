@@ -10,12 +10,12 @@ namespace PR12.Classes
     internal class PageChange : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        static int cointitems = 10;
+        static int cointitems = 5;
         static int countbutton = 2;
         public int[] NPage { get; set; } = new int[cointitems];
         public string[] Visible { get; set; } = new string[cointitems];
         public string[] Bold { get; set; } = new string[cointitems];
-        public string[] Button { get; set; } = new string[cointitems];
+        public string[] Button { get; set; } = new string[countbutton];
         int countpages;
         public int CountPages
         {
@@ -23,7 +23,7 @@ namespace PR12.Classes
             set
             {
                 countpages = value;
-                for (int i = 0; i < countpages; i++)
+                for (int i = 0; i < cointitems; i++)
                 {
                     if (CountPages <= i)
                     {
@@ -100,7 +100,7 @@ namespace PR12.Classes
                     if (NPage[i] == currentpage) Bold[i] = "ExtrsBold";
                     else Bold[i] = "Regular";
                 }
-                if (cointitems > 10)
+                if (countpages > 5)
                 {
                     if (NPage[0]!= 1)
                     {
@@ -110,7 +110,7 @@ namespace PR12.Classes
                     {
                         Button[0] = "Hidden";
                     }
-                    if (NPage[9] != countpages)
+                    if (NPage[4] != countpages)
                     {
                         Button[1] = "Visible";
                     }
