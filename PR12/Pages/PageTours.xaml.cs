@@ -159,5 +159,11 @@ namespace PR12.Pages
         {
 
         }
+
+        private void buttonHotel_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Framec.MainFrame.Navigate(new PageHotel());
+
+        }
     }
 }
