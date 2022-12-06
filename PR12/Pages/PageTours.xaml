@@ -1,0 +1,114 @@
+﻿<Page x:Class="PR12.Pages.PageTours"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PR12.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1100"
+      Title="PageTours">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*">
+            </RowDefinition>
+            <RowDefinition Height="6*">
+            </RowDefinition>
+            <RowDefinition Height="1*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Введите текст для поиска по названию:</TextBlock>
+                    <TextBox PreviewTextInput="textboxSearch_PreviewTextInput" Width="150" Name="textboxSearch" TextChanged="textboxSearch_TextChanged">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                Введите текст для поиска
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Введите текст для поиска по описанию:</TextBlock>
+                    <TextBox PreviewTextInput="textboxSearch_PreviewTextInput" Width="150" Name="textboxSearch2" TextChanged="textboxSearch_TextChanged">
+                        <TextBox.ToolTip>
+                            <ToolTip>
+                                Введите текст для поиска
+                            </ToolTip>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Выберите тип:</TextBlock>
+                    <ComboBox Width="200" Name="comboboxType" SelectionChanged="comboboxType_SelectionChanged">
+                        <ComboBox.ToolTip>
+                            <ToolTip>
+                                Раскройте список типов
+                            </ToolTip>
+                        </ComboBox.ToolTip>
+                    </ComboBox>
+                    <TextBlock>Сортировать по стоимости:</TextBlock>
+                    <ComboBox Width="210" Name="comboboxSort" SelectionChanged="comboboxType_SelectionChanged">
+                        <ComboBoxItem>Без сортировки</ComboBoxItem>
+                        <ComboBoxItem>По возрастанию стоимости тура</ComboBoxItem>
+                        <ComboBoxItem>По убыванию стоимости тура</ComboBoxItem>
+                        <ComboBox.ToolTip>
+                            <ToolTip>
+                                Раскройте список сортировки
+                            </ToolTip>
+                        </ComboBox.ToolTip>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Name="checkboxActual" Checked="checkboxActual_Checked" Unchecked="checkboxActual_Checked">
+                        только актуальные туры
+                    </CheckBox>
+                </StackPanel>
+                
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Name="textMoney"></TextBlock>
+                
+            </StackPanel>
+          
+        </StackPanel>
+
+        <ListView Grid.Row="1" Name="listTours" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="5" BorderThickness="1"  BorderBrush="Black">
+                        <Grid Name="gridTours" Width="300" Height="300" Margin="10,10,10,10">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
+                                <Image Width="200" Height="200" Source="{Binding ImagePreview}"></Image>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Name="textboxMoney" Text="{Binding Price, StringFormat={}{0:F3} РУБ}"></TextBlock>
+                                   
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Actual}" HorizontalAlignment="Left" Foreground="{Binding ForegroundActual}"></TextBlock>
+                                    <TextBlock Text="{Binding TicketCount, StringFormat={}Билетов: {0}}" HorizontalAlignment="Right" ></TextBlock>
+                                </StackPanel>
+                            
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2">
+
+        </StackPanel>
+
+    </Grid>
+</Page>
