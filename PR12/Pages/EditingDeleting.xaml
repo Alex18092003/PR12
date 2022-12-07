@@ -1,0 +1,50 @@
+﻿<Window x:Class="PR12.Pages.EditingDeleting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR12.Pages"
+        mc:Ignorable="d"
+        Title="EditingDeleting" Height="250" Width="650">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="10,10,0,0">
+                    <TextBlock Style="{StaticResource text}">Введите наименование отеля*:</TextBlock>
+                    <TextBox Margin="0,5,0,0" Width="300" Style="{StaticResource textbox}" Name="textNameHotel" PreviewTextInput="textNameHotel_PreviewTextInput">
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,10,0,0">
+                    <TextBlock Style="{StaticResource text}">Введите количество звезд от 0 до 5*:</TextBlock>
+                    <TextBox  PreviewTextInput="textStars_PreviewTextInput" Margin="0,5,0,0" Width="200" Style="{StaticResource textbox}" Name="textStars" >
+
+                    </TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="10,10,0,0">
+                    <TextBlock Style="{StaticResource text}">Введите описание отеля*:</TextBlock>
+                    <TextBox Margin="0,5,0,0" PreviewTextInput="textDescription_PreviewTextInput"  AcceptsReturn="True" Style="{StaticResource textbox}" Name="textDescription" ></TextBox>
+                </StackPanel>
+                <StackPanel Margin="10,10,0,0">
+                    <TextBlock Style="{StaticResource text}">Выберите страну*:</TextBlock>
+                    <ComboBox Width="300" Margin="0,5,0,0" Style="{StaticResource combobox}" Name="comboboxCount" >
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Margin="0,20,0,0" Template="{StaticResource button}" Click="buttonAdd_Click" Name="buttonAdd">
+                Сохранить изменения
+            </Button>
+           
+           
+        </StackPanel>
+        
+    </Grid>
+</Window>

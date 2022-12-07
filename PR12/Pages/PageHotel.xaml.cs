@@ -22,6 +22,8 @@ namespace PR12.Pages
     {
         Classes.PageChange pc = new Classes.PageChange();
         List<Hotel> hotelList = new List<Hotel>();
+
+
         public PageHotel()
         {
             InitializeComponent();
@@ -71,6 +73,11 @@ namespace PR12.Pages
             pc.Currentpage = pc.CountPages;
             datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
         }
+        private void txtNextt2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            pc.Currentpage = pc.CountPages;
+            datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+        }
 
         private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)  // обработка нажатия на один из Textblock в меню с номерами страниц
         {
@@ -90,6 +97,45 @@ namespace PR12.Pages
             }
             datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();  // оображение записей постранично с определенным количеством на каждой странице
 
+        }
+
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Hotel h = Classes.BaseClass.tBE.Hotel.FirstOrDefault(x => x.Id == index);
+            EditingDeleting windowPerson = new EditingDeleting(h); // создание объекта окна
+            windowPerson.ShowDialog();// октрытие созданного окна (дальнейший код не будет запущен, пока окно не будет закрыто)
+            Classes.Framec.MainFrame.Navigate(new PageHotel());// перезагрузка страницы
+        }
+
+        private void buttonDelet_Click(object sender, RoutedEventArgs e)
+        {
+            //Button btn = (Button)sender;
+            //int index = Convert.ToInt32(btn.Uid);
+            //Hotel entry = Classes.BaseClass.tBE.Hotel.FirstOrDefault(x => x.Id == index);
+            //string name = Name.ToString();
+            //MessageBoxResult dialogResult = MessageBox.Show($"Вы действительно хотите удалить отель {name}","Подтверждение", MessageBoxButton.YesNo);
+            //if (dialogResult == MessageBoxResult.Yes)
+            //{
+            //    Classes.BaseClass.tBE.Hotel.Remove(entry);
+            //    Classes.BaseClass.tBE.SaveChanges();
+            //    MessageBox.Show("Запись удалена");
+            //    Classes.Framec.MainFrame.Navigate(new PageHotel());
+            //}
+            //else
+            //{
+            //    Classes.Framec.MainFrame.Navigate(new PageHotel());
+            //}
+
+        }
+
+        private void buttonAdd_Click(object sender, RoutedEventArgs e)
+        {
+           
+            EditingDeleting windowPerson = new EditingDeleting(); // создание объекта окна
+            windowPerson.ShowDialog();// октрытие созданного окна (дальнейший код не будет запущен, пока окно не будет закрыто)
+            Classes.Framec.MainFrame.Navigate(new PageHotel());// перезагрузка страницы
         }
     }
 }
