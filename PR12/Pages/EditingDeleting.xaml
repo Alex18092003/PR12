@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR12.Pages"
         mc:Ignorable="d"
-        Title="EditingDeleting" Height="250" Width="650">
+        Title="EditingDeleting" Height="250" Width="680">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">

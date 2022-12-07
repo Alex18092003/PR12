@@ -92,14 +92,12 @@ namespace PR12.Pages
 
                 InitializeComponent();
                 buttonAdd.Content = "Сохранить";
-                // блокировка полей для редактирования клиента
-                if (flagUpdate == false)
-                {
+
                     comboboxCount.ItemsSource = Classes.BaseClass.tBE.Country.ToList();
                     comboboxCount.SelectedValuePath = "Code";
                     comboboxCount.DisplayMemberPath = "Name";
+                //comboboxCount.SelectedIndex = h.CountryCode; 
 
-                }
             }
             catch
             {
@@ -117,10 +115,10 @@ namespace PR12.Pages
                     h = new Hotel();
                 }
 
-                h.Name = textNameHotel.Text;
-                h.Description = textDescription.Text;
+                h.Name = Convert.ToString( textNameHotel.Text);
+                h.Description = Convert.ToString( textDescription.Text);
                 h.CountOfStars = Convert.ToInt32( textStars.Text);
-                h.CountryCode = comboboxCount.SelectedItem.ToString();
+                h.CountryCode = Convert.ToString(comboboxCount.SelectedValue);
                 if(flagUpdate == false)
                 {
                     Classes.BaseClass.tBE.Hotel.Add(h);
@@ -128,7 +126,15 @@ namespace PR12.Pages
 
 
                 Classes.BaseClass.tBE.SaveChanges();
-                MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных
+                if (flagUpdate == false)
+                {
+                    MessageBox.Show("Данные добавлены");
+                }
+                else
+                {
+                    MessageBox.Show("Данные изменены"); // сообщение об успешном изменение данных
+                }
+                
                 this.Close();// закрываем это окно
             }
             else

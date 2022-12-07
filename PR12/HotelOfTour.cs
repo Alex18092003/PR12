@@ -12,23 +12,13 @@ namespace PR12
     using System;
     using System.Collections.Generic;
     
-    public partial class Tour
+    public partial class HotelOfTour
     {
-        public Tour()
-        {
-            this.HotelOfTour = new HashSet<HotelOfTour>();
-            this.TypeOfTour = new HashSet<TypeOfTour>();
-        }
-    
+        public int HotelId { get; set; }
+        public int TourId { get; set; }
         public int Id { get; set; }
-        public int TicketCount { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImagePreview { get; set; }
-        public decimal Price { get; set; }
-        public bool IsActual { get; set; }
     
-        public virtual ICollection<HotelOfTour> HotelOfTour { get; set; }
-        public virtual ICollection<TypeOfTour> TypeOfTour { get; set; }
+        public virtual Hotel Hotel { get; set; }
+        public virtual Tour Tour { get; set; }
     }
 }

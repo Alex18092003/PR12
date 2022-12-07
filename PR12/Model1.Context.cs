@@ -29,6 +29,7 @@ namespace PR12
         public DbSet<Hotel> Hotel { get; set; }
         public DbSet<HotelComment> HotelComment { get; set; }
         public DbSet<HotelImage> HotelImage { get; set; }
+        public DbSet<HotelOfTour> HotelOfTour { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Tour> Tour { get; set; }
         public DbSet<Type> Type { get; set; }

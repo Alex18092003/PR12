@@ -27,11 +27,16 @@ namespace PR12.Pages
         public PageHotel()
         {
             InitializeComponent();
-            datagridHotels.ItemsSource = Classes.BaseClass.tBE.Hotel.ToList();
-          
 
-            pc.CountPages = Classes.BaseClass.tBE.Hotel.ToList().Count;
+            datagridHotels.ItemsSource = Classes.BaseClass.tBE.Hotel.ToList();
+
+            
+            textblockCountPages.Text = pc.CountPages.ToString();
+            textblockPage.Text = pc.Currentpage.ToString();
+            textblockCountRecords.Text = Convert.ToString( Classes.BaseClass.tBE.Hotel.ToList().Count);
+            pc.CountPage = Classes.BaseClass.tBE.Hotel.ToList().Count;
             DataContext = pc;
+            //textboxCount.Text = "10";
         }
 
         private void buttonTour_Click(object sender, RoutedEventArgs e)
@@ -43,7 +48,7 @@ namespace PR12.Pages
         {
             try
             {
-                if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+                if (!(Char.IsDigit(e.Text, 0))) e.Handled = true;
             }
             catch
             {
@@ -55,7 +60,10 @@ namespace PR12.Pages
         {
             try
             {
-                pc.CountPage = Convert.ToInt32(textboxCount.Text);
+                if (Convert.ToInt32(textboxCount.Text) > 0)
+                {
+                    pc.CountPage = Convert.ToInt32(textboxCount.Text);
+                }
             }
             catch
             {
@@ -64,19 +72,22 @@ namespace PR12.Pages
             pc.Countlist = hotelList.Count;
             datagridHotels.ItemsSource = hotelList.Skip(0).Take(pc.CountPage).ToList();
             pc.Currentpage = 1;
-
+            textblockCountPages.Text = pc.CountPages.ToString();
+            textblockPage.Text = pc.Currentpage.ToString();
 
         }
 
         private void txtNextt_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            pc.Currentpage = pc.CountPages;
+            pc.Currentpage = 1;
             datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+            textblockPage.Text = pc.Currentpage.ToString();
         }
         private void txtNextt2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             pc.Currentpage = pc.CountPages;
             datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+            textblockPage.Text = pc.Currentpage.ToString();
         }
 
         private void GoPage_MouseDown(object sender, MouseButtonEventArgs e)  // обработка нажатия на один из Textblock в меню с номерами страниц
@@ -96,7 +107,7 @@ namespace PR12.Pages
                     break;
             }
             datagridHotels.ItemsSource = hotelList.Skip(pc.Currentpage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();  // оображение записей постранично с определенным количеством на каждой странице
-
+            textblockPage.Text = pc.Currentpage.ToString();
         }
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
@@ -111,22 +122,45 @@ namespace PR12.Pages
 
         private void buttonDelet_Click(object sender, RoutedEventArgs e)
         {
-            //Button btn = (Button)sender;
-            //int index = Convert.ToInt32(btn.Uid);
-            //Hotel entry = Classes.BaseClass.tBE.Hotel.FirstOrDefault(x => x.Id == index);
-            //string name = Name.ToString();
-            //MessageBoxResult dialogResult = MessageBox.Show($"Вы действительно хотите удалить отель {name}","Подтверждение", MessageBoxButton.YesNo);
-            //if (dialogResult == MessageBoxResult.Yes)
-            //{
-            //    Classes.BaseClass.tBE.Hotel.Remove(entry);
-            //    Classes.BaseClass.tBE.SaveChanges();
-            //    MessageBox.Show("Запись удалена");
-            //    Classes.Framec.MainFrame.Navigate(new PageHotel());
-            //}
-            //else
-            //{
-            //    Classes.Framec.MainFrame.Navigate(new PageHotel());
-            //}
+            // MessageBox.Show("Для удаления не выбрано ничего");
+            if (datagridHotels.SelectedItems.Count != 0)
+            {
+                int i = 0;
+                foreach (Hotel h in datagridHotels.SelectedItems)
+                {
+                    string name = h.Name;
+                    List<HotelOfTour> t = Classes.BaseClass.tBE.HotelOfTour.Where(x => x.HotelId == h.Id).ToList();
+                    foreach (HotelOfTour hotel in t)
+                    {
+                        if (hotel.Tour.IsActual == true)
+                        {
+                             name = Name.ToString();
+                            MessageBox.Show($"Отель {0} не может быть удален", name);
+                            return;
+
+                        }
+                    }
+                   
+                    MessageBoxResult dialogResult = MessageBox.Show($"Вы действительно хотите удалить отель {name}", "Подтверждение", MessageBoxButton.YesNo);
+                    if (dialogResult == MessageBoxResult.Yes)
+                    {
+                        Classes.BaseClass.tBE.Hotel.Remove(h);
+                        MessageBox.Show("Запись удалена");
+                        i++;
+
+                    }
+                }
+                if (i != 0)
+                {
+                    Classes.BaseClass.tBE.SaveChanges();
+                    Classes.Framec.MainFrame.Navigate(new PageHotel());
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Для удаления не выбрано ничего");
+            }
 
         }
 

@@ -18,7 +18,7 @@ namespace PR12
         {
             this.HotelComment = new HashSet<HotelComment>();
             this.HotelImage = new HashSet<HotelImage>();
-            this.Tour = new HashSet<Tour>();
+            this.HotelOfTour = new HashSet<HotelOfTour>();
         }
     
         public int Id { get; set; }
@@ -30,6 +30,6 @@ namespace PR12
         public virtual Country Country { get; set; }
         public virtual ICollection<HotelComment> HotelComment { get; set; }
         public virtual ICollection<HotelImage> HotelImage { get; set; }
-        public virtual ICollection<Tour> Tour { get; set; }
+        public virtual ICollection<HotelOfTour> HotelOfTour { get; set; }
     }
 }
