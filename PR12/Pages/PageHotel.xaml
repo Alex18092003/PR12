@@ -7,26 +7,26 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageHotel">
-  
 
-    
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*">
             </RowDefinition>
-            <RowDefinition Height="3*">
+            <RowDefinition Height="4*">
             </RowDefinition>
             <RowDefinition Height="1*">
             </RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0"  Background=" #fac716">
             <StackPanel Orientation="Horizontal">
                 <Button  VerticalAlignment="Center" Margin="20,10,0,0" Template="{StaticResource button}" Name="buttonTour" Click="buttonTour_Click">Туры</Button>
                 <TextBlock Margin="100,0,0,0" VerticalAlignment="Center" Style="{StaticResource text}">Список отелей:</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="10,10,10,0" Style="{StaticResource text}">Количество записей:</TextBlock>
+                <TextBlock Margin="10,10,10,0" Style="{StaticResource text}">Общее количество записей:</TextBlock>
                 <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" x:Name="textblockCountRecords"></TextBlock>
                 <TextBlock  Margin="10,10,10,0" Style="{StaticResource text}">Количество страниц</TextBlock>
                 <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" Name="textblockCountPages"></TextBlock>
@@ -38,27 +38,34 @@
                 <TextBlock Margin="10,10,10,0" Style="{StaticResource text}">Введите количество записей на одной странице</TextBlock>
                 <TextBox Margin="0,10,0,0" Style="{StaticResource textbox}" Width="70" Name="textboxCount" PreviewTextInput="textboxCount_PreviewTextInput" TextChanged="textboxCount_TextChanged"></TextBox>
                 <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtNextt" Visibility="{Binding Button[0]}" Uid="next" Text="в начало" MouseDown="txtNextt_MouseDown"></TextBlock>
+                <TextBlock  Margin="0,10,0,0" Style="{StaticResource text}" Text=" "></TextBlock>
                 <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtPrev" Uid="prev" Text="&lt;"  MouseDown="GoPage_MouseDown"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt1" Uid="1" Text="{Binding Path=NPage[0]}" Visibility="{Binding Visible[0]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[0]}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt2" Uid="2" Text="{Binding Path=NPage[1]}" Visibility="{Binding Visible[1]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[1]}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt3" Uid="3" Text="{Binding Path=NPage[2]}" Visibility="{Binding Visible[2]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[2]}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt4" Uid="4" Text="{Binding Path=NPage[3]}" Visibility="{Binding Visible[3]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[3]}"></TextBlock>
-                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt5" Uid="5" Text="{Binding Path=NPage[4]}" Visibility="{Binding Visible[4]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[4]}"></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt1" Uid="1" Text="{Binding Path=NPage[0] }" Visibility="{Binding Visible[0]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[0]}"></TextBlock>
+                <TextBlock  Margin="0,10,0,0" Style="{StaticResource text}" Text=" "></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt2" Uid="2" Text="{Binding Path=NPage[1] }" Visibility="{Binding Visible[1]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[1]}"></TextBlock>
+                <TextBlock  Margin="0,10,0,0" Style="{StaticResource text}" Text=" "> </TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt3" Uid="3" Text="{Binding Path=NPage[2] }" Visibility="{Binding Visible[2]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[2]}"></TextBlock>
+                <TextBlock  Margin="0,10,0,0" Style="{StaticResource text}" Text=" "></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt4" Uid="4" Text="{Binding Path=NPage[3] }" Visibility="{Binding Visible[3]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[3]}"></TextBlock>
+                <TextBlock  Margin="0,10,0,0" Style="{StaticResource text}" Text=" "></TextBlock>
+                <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txt5" Uid="5" Text="{Binding Path=NPage[4] }" Visibility="{Binding Visible[4]}"  MouseDown="GoPage_MouseDown" FontWeight="{Binding Bold[4]}"></TextBlock>
                 <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtNext" Uid="next" Text="&gt;"  MouseDown="GoPage_MouseDown"></TextBlock>
+                <TextBlock  Margin="0,10,0,0" Style="{StaticResource text}" Text=" "></TextBlock>
                 <TextBlock Margin="0,10,0,0" Style="{StaticResource text}" VerticalAlignment="Center" Name="txtNextt2" Visibility="{Binding Button[1]}" Uid="next" Text="в конец" MouseDown="txtNextt2_MouseDown"></TextBlock>
             </StackPanel>
             
         </StackPanel>
 
-       
-            <DataGrid Grid.Row="1" IsReadOnly="True" Name="datagridHotels" AutoGenerateColumns="False" CanUserAddRows="False" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="Name" Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Количество звезд" Binding="{Binding CountOfStars}"></DataGridTextColumn>
+
+        <DataGrid Grid.Row="1" IsReadOnly="True" Name="datagridHotels" AutoGenerateColumns="False" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn  x:Name="Name" Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Количество звезд" Binding="{Binding CountOfStars}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Страна"  Binding="{Binding Country.Name}" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество имеющихся туров" Binding="{Binding CountTour}"></DataGridTextColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
+                <DataGridTextColumn   Header="Количество имеющихся туров" Binding="{Binding CountTour, TargetNullValue = 0}" >
+                </DataGridTextColumn  >
+                <DataGridTemplateColumn  >
+                    <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Uid="{Binding Id}" Template="{StaticResource button}" Name="buttonEdit" Click="buttonEdit_Click">
                                     Редактировать
@@ -69,10 +76,12 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Margin="0,10,20,0" Click="buttonAdd_Click" Template="{StaticResource button}" Name="buttonAdd">Добавить отель</Button>
-            <Button Margin="0,10,20,0" Name="buttonDelet" Click="buttonDelet_Click" Template="{StaticResource button}">Удалить</Button>
+        <StackPanel  Background=" #fac716"  Grid.Row="2">
+            <StackPanel   Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Margin="0,10,20,0" Click="buttonAdd_Click" Template="{StaticResource button}" Name="buttonAdd">Добавить отель</Button>
+                <Button Margin="0,10,20,0" Name="buttonDelet" Click="buttonDelet_Click" Template="{StaticResource button}">Удалить</Button>
+            </StackPanel>
         </StackPanel>
+        
     </Grid>
 </Page>

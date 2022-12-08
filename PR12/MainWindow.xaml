@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR12"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1100">
+        Title="Путешествуй по России" Height="800" Width="1200" Icon="\Resoursec\sdsd.png">
     <Grid>
         <Frame Name="fMain" NavigationUIVisibility="Hidden">
 

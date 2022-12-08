@@ -30,11 +30,17 @@ namespace PR12.Pages
 
             datagridHotels.ItemsSource = Classes.BaseClass.tBE.Hotel.ToList();
 
+            hotelList = Classes.BaseClass.tBE.Hotel.ToList();
+
             
+            pc.CountPage = Classes.BaseClass.tBE.Hotel.ToList().Count;
+            pc.CountPage = 10;
+
+            pc.Countlist = hotelList.Count;
+            datagridHotels.ItemsSource = hotelList.Skip(0).Take(pc.CountPage).ToList();
             textblockCountPages.Text = pc.CountPages.ToString();
             textblockPage.Text = pc.Currentpage.ToString();
-            textblockCountRecords.Text = Convert.ToString( Classes.BaseClass.tBE.Hotel.ToList().Count);
-            pc.CountPage = Classes.BaseClass.tBE.Hotel.ToList().Count;
+            textblockCountRecords.Text = Convert.ToString(Classes.BaseClass.tBE.Hotel.ToList().Count);
             DataContext = pc;
             //textboxCount.Text = "10";
         }
@@ -60,21 +66,20 @@ namespace PR12.Pages
         {
             try
             {
-                if (Convert.ToInt32(textboxCount.Text) > 0)
-                {
+
                     pc.CountPage = Convert.ToInt32(textboxCount.Text);
-                }
+  
             }
             catch
             {
-                pc.CountPage = hotelList.Count;
+                pc.CountPage = 10;
             }
             pc.Countlist = hotelList.Count;
             datagridHotels.ItemsSource = hotelList.Skip(0).Take(pc.CountPage).ToList();
             pc.Currentpage = 1;
             textblockCountPages.Text = pc.CountPages.ToString();
             textblockPage.Text = pc.Currentpage.ToString();
-
+            //textblockCountRecords.Text = Convert.ToString(Classes.BaseClass.tBE.Hotel.ToList().Count);
         }
 
         private void txtNextt_MouseDown(object sender, MouseButtonEventArgs e)

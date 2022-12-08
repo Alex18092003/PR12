@@ -177,6 +177,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resoursec\sdsd.png" />
     <Resource Include="Resoursec\picture.png" />
     <Resource Include="Images\Болгарское наследие.jpg" />
     <Resource Include="Images\Волшебный Восток.jpg" />

@@ -86,15 +86,22 @@ namespace PR12.Pages
             }
             if (!string.IsNullOrWhiteSpace(textboxSearch2.Text))  // если строка не пустая и если она не состоит из пробелов
             {
-                foreach(Tour t in list1)
+                List<Tour> tt = Classes.BaseClass.tBE.Tour.Where(x => x.Description != null).ToList();
+                if (tt.Count > 0)
                 {
-                    if(t.Description != null)
+                    foreach (Tour t in list1)
                     {
-                        listFilter = listFilter.Where(x => x.Description.ToLower().Contains(textboxSearch2.Text.ToLower())).ToList();
+                        if (t.Description != null)
+                        {
+                            listFilter = listFilter.Where(x => x.Description.ToLower().Contains(textboxSearch2.Text.ToLower())).ToList();
+                        }
+                       
                     }
                 }
-               
-
+                else
+                {
+                    MessageBox.Show("Нет записей");
+                }
             }
 
             if(checkboxActual.IsChecked == true)
@@ -115,7 +122,6 @@ namespace PR12.Pages
                         listFilter.Reverse();
                     }
                     break;
-               
             }
 
             listTours.ItemsSource = listFilter;

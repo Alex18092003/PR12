@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PR12.Pages"
         mc:Ignorable="d"
         Title="EditingDeleting" Height="250" Width="680">
-    <Grid>
+    <Grid Background=" #fac716">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
             </RowDefinition>
