@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR12.Pages"
         mc:Ignorable="d"
-        Title="EditingDeleting" Height="250" Width="680">
+        Title="EditingDeleting" Height="350" Width="680">
     <Grid Background=" #fac716">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*">
@@ -30,7 +30,7 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Margin="10,10,0,0">
                     <TextBlock Style="{StaticResource text}">Введите описание отеля*:</TextBlock>
-                    <TextBox Margin="0,5,0,0" PreviewTextInput="textDescription_PreviewTextInput"  AcceptsReturn="True" Style="{StaticResource textbox}" Name="textDescription" ></TextBox>
+                    <TextBox Margin="0,5,0,0" Width="220"  Height="100" PreviewTextInput="textDescription_PreviewTextInput" TextWrapping="Wrap" AcceptsReturn="True" Style="{StaticResource textbox}" Name="textDescription" ></TextBox>
                 </StackPanel>
                 <StackPanel Margin="10,10,0,0">
                     <TextBlock Style="{StaticResource text}">Выберите страну*:</TextBlock>
